@@ -1,0 +1,17 @@
+---
+- name: Update index.html on Nginx Server
+  hosts: nginx
+  become: yes  # To execute commands with elevated privileges (sudo)
+
+  tasks:
+    - name: Copy index.html file
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+      notify: Reload Nginx
+  
+  handlers:
+    - name: Reload Nginx
+      systemd:
+        name: nginx
+        state: restarted
