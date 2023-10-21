@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: SH-Agents
+  vmImage: 'Ubuntu 20.04'
 
 steps:
 - script: echo Hello, world!
